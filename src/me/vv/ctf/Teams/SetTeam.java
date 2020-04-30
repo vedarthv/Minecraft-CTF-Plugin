@@ -6,34 +6,34 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
+import me.vv.ctf.Globals.Globals;
 
 
 public class SetTeam implements CommandExecutor{
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		
 		Player player = (Player) sender;
-		
+
 		if(label.equalsIgnoreCase("setteam") || label.equalsIgnoreCase("st")) {
 			
 			if(args.length!=2 || !(args[0].equals("blue") || args[0].equals("red"))) {
 				player.sendMessage(ChatColor.RED + "Usage: /setteam <red,blue> <player>");
-				player.sendMessage(ChatColor.RED +"Args length:" + args.length);
-				player.sendMessage(ChatColor.RED +"Team:" + args[0]);
-				player.sendMessage(ChatColor.RED +"Player:" + args[1]);
 				return true;
 			}
 		
 			Player p = Bukkit.getPlayer(args[1]);
 	
 			if (p == null) {
-				
-				player.sendMessage(ChatColor.RED + args[1] + " Not Found!");
+				player.sendMessage(ChatColor.RED + args[1] + " not found!");
 				return true;
 			}
-			Team.AssignTeam(args[0],p);
+
+			Team targetTeam = args[0].equals("blue") ? Globals.blue_team : Globals.red_team;
+			Team opposingTeam = args[0].equals("blue") ? Globals.red_team : Globals.blue_team;
+			targetTeam.addMember(p);
+			opposingTeam.removeMember(p);
 			
-			
+			return true;
 		}
 		return false; 
 	}
