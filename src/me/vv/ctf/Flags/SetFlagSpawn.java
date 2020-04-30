@@ -31,7 +31,7 @@ public class SetFlagSpawn implements CommandExecutor{
 				return true;
       }
       
-      playerTeam.setFlagSpawn(player.getLocation());
+      playerTeam.setFlagSpawnLocation(player.getLocation());
       Bukkit.broadcastMessage(ChatColor.RED + "Team " + playerTeam.getName() + " has set their flag spawn!");
 
       return true;

@@ -1,11 +1,7 @@
 package me.vv.ctf.Flags;
 
-import com.sun.xml.internal.bind.v2.runtime.Location;
-
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,7 +17,7 @@ public class FlagCarrierDead implements Listener {
 	@EventHandler 
 	public void onPlayerDeath(PlayerDeathEvent e) {
 		
-    Player p = e.getPlayer();
+    Player p = (Player)e.getEntity();
     Material banner;
     if(Globals.red_flag_holder.getName().equals(p.getName())) {
       banner = Material.RED_BANNER;
@@ -41,7 +37,7 @@ public class FlagCarrierDead implements Listener {
     p.getInventory().remove(banner);
     p.getLocation().getBlock().setType(banner);
     Bukkit.broadcastMessage(opposingTeam.getColour() + "Team " + opposingTeam.getName() + "'s flag was dropped at " +
-      p.getLocation.toString() + ".");
+      p.getLocation().toString() + ".");
   }
 }
 

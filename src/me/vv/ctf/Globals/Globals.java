@@ -16,11 +16,11 @@ public class Globals {
   public static void initGlobals(String redName, ChatColor redColour, String blueName, ChatColor blueColour) {
     red_team = new Team(redName, redColour);
     blue_team = new Team(blueName, blueColour);
+    teams = new ArrayList<Team>();
     teams.add(red_team);
     teams.add(blue_team);
     red_flag_holder = null;
     blue_flag_holder = null;
   }
 
-  public static void 
 }

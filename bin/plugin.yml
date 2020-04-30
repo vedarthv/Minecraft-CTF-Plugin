@@ -1,7 +1,10 @@
 name: CTF
 author: Vedarth & Karen
-version: 0.2
+version: 0.3
 main: me.vv.ctf.Main
 commands:
   setteam:
     aliases: st
+  teams:
+  setflagspawn:
+    aliases: sfs

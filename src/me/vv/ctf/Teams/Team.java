@@ -1,13 +1,9 @@
 package me.vv.ctf.Teams;
 
 import java.util.ArrayList;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerRespawnEvent;
-
-
 
 public class Team {
 	String name;
@@ -20,16 +16,15 @@ public class Team {
 		this.name = n;
 		this.colour = c;
 		this.members = new ArrayList<Player>();
-		this.flag_holder = null;
-		this.flagSpawn = getRespawnLocation();
-		this.flagScore = getRespawnLocation();
+		this.flagSpawn = null;
+		this.flagScore = null;
 	}
 
 	public String getName() {
 		return this.name;
 	}
 
-	public ChatColour getColour() {
+	public ChatColor getColour() {
 		return this.colour;
 	}
 
