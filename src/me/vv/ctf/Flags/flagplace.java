@@ -28,7 +28,7 @@ public class flagplace implements Listener {
 		}
 		
 		if (e.getBlockPlaced().getType().equals(Material.RED_BANNER) || e.getBlockPlaced().getType().equals(Material.BLUE_BANNER)) {
-			com.sun.xml.internal.bind.v2.runtime.Location locPlacedAt = e.getBlockAgainst().getLocation();
+			Location locPlacedAt = e.getBlockAgainst().getLocation();
 			Bukkit.broadcastMessage("Placed at: "+locPlacedAt.toString());
 			Bukkit.broadcastMessage("Needed at: "+playerTeam.getFlagScoreLocation().toString());
 			if(locPlacedAt.equals(playerTeam.getFlagScoreLocation())) {

@@ -1,7 +1,6 @@
 package me.vv.ctf.Flags;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,7 +9,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import me.vv.ctf.Globals.Globals;
 import me.vv.ctf.Teams.Team;
 
-public class Flags implements Listener {
+public class flagbreak implements Listener {
 
 
 	@EventHandler 
@@ -48,14 +47,14 @@ public class Flags implements Listener {
 			Bukkit.broadcastMessage(playerTeam.getColour() + "Team " + playerTeam.getName() + "'s flag was returned by " + p.getName());
 
 			// returning logic
+			e.getBlock().setType(Material.AIR);
 			if(flag == RED) {
 				playerTeam.getFlagSpawnLocation().getBlock().setType(Material.RED_BANNER);
 			} else {
 				playerTeam.getFlagSpawnLocation().getBlock().setType(Material.BLUE_BANNER);
 			}
 			e.setCancelled(true);
-			e.getBlock().setTo(Material.AIR);
-		} else {						// player breaking enemy flag
+			} else {						// player breaking enemy flag
 			Bukkit.broadcastMessage(opposingTeam.getColour() + "Team " + opposingTeam.getName() + "'s flag was stolen by " + p.getName());
 			if(flag == RED) {
 				Globals.red_flag_holder = p;	// p is on Blue team
