@@ -1,0 +1,7 @@
+name: CTF
+author: Vedarth & Karen
+version: 0.2
+main: me.vv.ctf.Main
+commands:
+  setteam:
+    aliases: st
