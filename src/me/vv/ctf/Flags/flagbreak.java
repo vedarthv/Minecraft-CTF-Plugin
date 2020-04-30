@@ -29,13 +29,16 @@ public class Flags implements Listener {
 		
 		Player p = e.getPlayer();
 		Team playerTeam = null;
+		Team opposingTeam = null;
 		String team = "";
 		if(Globals.red_team.isPlayerInTeam(p)) {
 			team = RED;
 			playerTeam = Globals.red_team;
+			opposingTeam = Globals.blue_team;
 		} else if(Globals.blue_team.isPlayerInTeam(p)) {
 			team = BLUE;
 			playerTeam = Globals.blue_team;
+			opposingTeam = Globals.red_team;
 		} else {
 			e.setCancelled(true);
 			return;
@@ -51,8 +54,9 @@ public class Flags implements Listener {
 				playerTeam.getFlagSpawnLocation().getBlock().setType(Material.BLUE_BANNER);
 			}
 			e.setCancelled(true);
+			e.getBlock().setTo(Material.AIR);
 		} else {						// player breaking enemy flag
-			Bukkit.broadcastMessage(playerTeam.getColour() + "Team " + playerTeam.getName() + "'s flag was stolen by " + p.getName());
+			Bukkit.broadcastMessage(opposingTeam.getColour() + "Team " + opposingTeam.getName() + "'s flag was stolen by " + p.getName());
 			if(flag == RED) {
 				Globals.red_flag_holder = p;	// p is on Blue team
 			} else {
