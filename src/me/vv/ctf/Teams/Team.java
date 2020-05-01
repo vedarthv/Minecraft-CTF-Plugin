@@ -45,7 +45,9 @@ public class Team {
 	}
 	
 	public void addMember(Player player) {
-		this.members.add(player);
+		if(!(this.members.contains(player))) {
+			this.members.add(player);
+		}		
 	}
 
 	public void removeMember(Player player) {

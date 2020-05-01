@@ -3,6 +3,10 @@ package me.vv.ctf;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import me.vv.ctf.Flags.FlagCarrierDead;
+import me.vv.ctf.Flags.FlagCarrierNoDrop;
+import me.vv.ctf.Flags.FlagCarrierNoPVP;
 import me.vv.ctf.Flags.SetFlagSpawn;
 import me.vv.ctf.Flags.flagbreak;
 import me.vv.ctf.Flags.flagplace;
@@ -22,6 +26,9 @@ public class Main extends JavaPlugin implements Listener {
 		this.getCommand("setteam").setExecutor(new SetTeam());
 		this.getCommand("teams").setExecutor(new PrintTeams());
 		this.getCommand("setflagspawn").setExecutor(new SetFlagSpawn());
+		getServer().getPluginManager().registerEvents(new FlagCarrierNoPVP(), this);
+		getServer().getPluginManager().registerEvents(new FlagCarrierNoDrop(), this);
+		getServer().getPluginManager().registerEvents(new FlagCarrierDead(), this);
 	
 	}
 	

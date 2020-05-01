@@ -2,6 +2,7 @@ package me.vv.ctf.Globals;
 
 import java.util.ArrayList;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import me.vv.ctf.Teams.Team;
 
@@ -21,6 +22,17 @@ public class Globals {
     teams.add(blue_team);
     red_flag_holder = null;
     blue_flag_holder = null;
+  }
+  
+  public static String safeGetName(Player p) {
+	  return p == null ? "" : p.getName();
+  }
+  
+  public static String getNiceLocation(Location loc) {
+	  if(loc == null) {
+		  return "null";
+	  }
+	  return "("+loc.getX()+", " + loc.getY()+ ", " + loc.getZ() + ")";
   }
 
 }
