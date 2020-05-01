@@ -10,6 +10,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 import me.vv.ctf.Globals.Globals;
 import me.vv.ctf.Teams.Team;
+import net.md_5.bungee.api.ChatColor;
 
 public class flagplace implements Listener {
 	
@@ -27,6 +28,12 @@ public class flagplace implements Listener {
 			opposingTeam = Globals.red_team;
 		}
 		
+		if (e.getBlockPlaced().getType().equals(Material.RED_WALL_BANNER) || e.getBlockPlaced().getType().equals(Material.BLUE_WALL_BANNER)) {
+			e.setCancelled(true);
+			p.sendMessage(ChatColor.RED + "Cannot place a Wall Banner!");
+			return;
+		}
+		
 		if (e.getBlockPlaced().getType().equals(Material.RED_BANNER) || e.getBlockPlaced().getType().equals(Material.BLUE_BANNER)) {
 			Location locPlacedAt = e.getBlockAgainst().getLocation();
 			if(locPlacedAt.equals(playerTeam.getFlagScoreLocation())) {
@@ -42,7 +49,8 @@ public class flagplace implements Listener {
 				else {
 					Globals.blue_flag_holder = null;
 				}
-				Bukkit.broadcastMessage(opposingTeam.getColour() + "Team " + opposingTeam.getName() + " 's flag was dropped at: " +
+				Team t = e.getBlockPlaced().getType().equals(Material.RED_BANNER) ? Globals.red_team : Globals.blue_team;
+				Bukkit.broadcastMessage(t.getColour() + "Team " + t.getName() + " 's flag was dropped at: " +
 					Globals.getNiceLocation(locPlacedAt) + ".");
 			}
 		}
