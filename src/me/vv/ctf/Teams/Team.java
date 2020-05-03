@@ -37,7 +37,10 @@ public class Team {
 	}
 
 	public void setFlagSpawnLocation(Location loc) {
-		  this.flagSpawn = loc;
+		  double a = Math.floor(loc.getX());
+	      double b = Math.floor(loc.getY());
+	      double c = Math.floor(loc.getZ());
+		  this.flagSpawn = new Location(loc.getWorld(), a, b, c);
 	      double x = Math.floor(loc.getX()-1);
 	      double y = Math.floor(loc.getY()-1);
 	      double z = Math.floor(loc.getZ()-1);

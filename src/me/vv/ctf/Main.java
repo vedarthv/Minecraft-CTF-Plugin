@@ -3,7 +3,6 @@ package me.vv.ctf;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import me.vv.ctf.Flags.FlagCarrierDead;
 import me.vv.ctf.Flags.FlagCarrierNoDrop;
 import me.vv.ctf.Flags.FlagCarrierNoPVP;
@@ -13,6 +12,8 @@ import me.vv.ctf.Flags.flagplace;
 import me.vv.ctf.Teams.SetTeam;
 import me.vv.ctf.Teams.PrintTeams;
 import me.vv.ctf.Globals.Globals;
+import me.vv.ctf.PlayerCommandLog.PlayerCommandIssue;
+import me.vv.ctf.PlayerCommandLog.PlayerCommandLog;
 
 
 
@@ -29,8 +30,10 @@ public class Main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new FlagCarrierNoPVP(), this);
 		getServer().getPluginManager().registerEvents(new FlagCarrierNoDrop(), this);
 		getServer().getPluginManager().registerEvents(new FlagCarrierDead(), this);
-	
+		this.getCommand("cmdtoggle").setExecutor(new PlayerCommandLog());
+		getServer().getPluginManager().registerEvents(new PlayerCommandIssue(), this);
 	}
+	
 	
 	@Override
 	public void onDisable() {
