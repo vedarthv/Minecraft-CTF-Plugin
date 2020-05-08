@@ -1,6 +1,6 @@
 name: CTF
 author: Vedarth & Karen
-version: 1.1
+version: 1.2
 main: me.vv.ctf.Main
 commands:
   setteam:
@@ -9,4 +9,6 @@ commands:
   setflagspawn:
     aliases: sfs
   cmdtoggle:
-    aliases: gmtg
+    aliases: cmtg
+  respawntime:
+    aliases: rt

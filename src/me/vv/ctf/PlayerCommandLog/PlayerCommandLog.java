@@ -12,7 +12,7 @@ public class PlayerCommandLog implements CommandExecutor{
 		public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 			Player player = (Player) sender;
 
-			if(label.equalsIgnoreCase("cmdtoggle") || label.equalsIgnoreCase("gmtg")) {
+			if(label.equalsIgnoreCase("cmdtoggle") || label.equalsIgnoreCase("cmtg")) {
 				
 				if(args.length!=1 || !(args[0].equals("on") || args[0].equals("off"))) {
 					player.sendMessage(ChatColor.RED + "Usage: /cmdtoggle <on/off>");
@@ -21,6 +21,7 @@ public class PlayerCommandLog implements CommandExecutor{
 				
 				if(args[0].equals("on")) {
 						Globals.loggers.add(player);
+						player.sendMessage("cmdtoggle is on.");
 						return true;
 						
 				}

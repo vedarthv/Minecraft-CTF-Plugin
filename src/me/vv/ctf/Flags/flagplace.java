@@ -19,13 +19,28 @@ public class flagplace implements Listener {
 		Player p = e.getPlayer();
 		Team playerTeam = null;
 		Team opposingTeam = null;
+		Location flagSpawn = null;
+		Location flagScore = null;
 		if(Globals.red_team.isPlayerInTeam(p)) {
 			playerTeam = Globals.red_team;
 			opposingTeam = Globals.blue_team;
+			flagSpawn = playerTeam.getFlagSpawnLocation();
+			flagScore = playerTeam.getFlagScoreLocation();
 		} else if(Globals.blue_team.isPlayerInTeam(p)) {
 			playerTeam = Globals.blue_team;
 			opposingTeam = Globals.red_team;
+			flagSpawn = playerTeam.getFlagSpawnLocation();
+			flagScore = playerTeam.getFlagScoreLocation();
 		}
+		
+		if (e.getBlockPlaced().getLocation().equals(flagSpawn) || e.getBlockPlaced().getLocation().equals(flagScore)) {
+			e.setCancelled(true);
+			p.sendMessage(ChatColor.RED + "Cannot place a block to cover the flag site!");
+			
+		}
+				
+		
+		
 		
 		if (e.getBlockPlaced().getType().equals(Material.RED_WALL_BANNER) || e.getBlockPlaced().getType().equals(Material.BLUE_WALL_BANNER)) {
 			e.setCancelled(true);

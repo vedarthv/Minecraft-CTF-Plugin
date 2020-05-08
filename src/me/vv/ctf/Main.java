@@ -14,6 +14,8 @@ import me.vv.ctf.Teams.PrintTeams;
 import me.vv.ctf.Globals.Globals;
 import me.vv.ctf.PlayerCommandLog.PlayerCommandIssue;
 import me.vv.ctf.PlayerCommandLog.PlayerCommandLog;
+import me.vv.ctf.Respawn.OnRespawnEvent;
+import me.vv.ctf.Respawn.RespawnTimeCommand;
 
 
 
@@ -31,14 +33,18 @@ public class Main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new FlagCarrierNoDrop(), this);
 		getServer().getPluginManager().registerEvents(new FlagCarrierDead(), this);
 		this.getCommand("cmdtoggle").setExecutor(new PlayerCommandLog());
-		getServer().getPluginManager().registerEvents(new PlayerCommandIssue(), this);
+		getServer().getPluginManager().registerEvents(new PlayerCommandIssue(), this);  
+		getServer().getPluginManager().registerEvents(new OnRespawnEvent(this), this);
+		this.getCommand("respawntime").setExecutor(new RespawnTimeCommand());
+		
+		
 	}
-	
 	
 	@Override
 	public void onDisable() {
 		getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "Bye");
 	}
+		
 	
 }
 

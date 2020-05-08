@@ -14,6 +14,7 @@ public class Globals {
   public static Player red_flag_holder;		// Holds the RED flag
   public static Player blue_flag_holder;		// Holds the BLUE flag
   public static ArrayList<Player> loggers;  //Players who access the /cmdtoggle command
+  public static int respawn_time;
 
   public static void initGlobals(String redName, ChatColor redColour, String blueName, ChatColor blueColour) {
     red_team = new Team(redName, redColour);
@@ -24,6 +25,7 @@ public class Globals {
     red_flag_holder = null;
     blue_flag_holder = null;
     loggers = new ArrayList<Player>();
+    respawn_time = 0;
   }
   
   public static String safeGetName(Player p) {
