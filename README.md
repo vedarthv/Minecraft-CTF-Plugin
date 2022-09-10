@@ -1,8 +1,8 @@
 # Minecraft-CTF-Plugin
 A Capture the Flag Plugin for Minecraft 1.15.2 Bukkit 
 
-- Create teams with `\st <name>`
-- Join a team then set your team's flag spawn point with `\sfs`
+- Create teams with `\st <player> <team>`
+- Set a team's flag spawn point with `\sfs <team>` while standing on the block where you want the flag to spwan
 - Set a respawn timer for players `\rt <seconds>`
 
 ```
