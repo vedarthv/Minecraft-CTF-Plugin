@@ -1,4 +1,4 @@
-# Minecraft-CTF-Plugin
+# Minecraft-CTF-Plugin (Karan. N, Vedarth. V)
 A Capture the Flag Plugin for Minecraft 1.15.2 Bukkit 
 
 - Assign players to teams with `\st <player> <team>`
